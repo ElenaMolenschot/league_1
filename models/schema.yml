@@ -1,0 +1,33 @@
+# schema.yml
+version: 2
+
+sources:
+  - name: div
+    schema: League_1
+    tables:
+      - name: premier_league
+        identifier: stats_joueurs_premier_league
+      - name: liga
+        identifier: stats_joueurs_liga
+      - name: bundesliga
+        identifier: stats_joueurs_bundesliga
+      - name: serie_a
+        identifier: stats_joueurs_serie_a
+      - name: serie_b
+        identifier: stats_joueurs_serie_b
+      - name: ligue_1
+        identifier: stats_joueurs_ligue1
+      - name: eredivisie
+        identifier: stats_joueurs_eredivisie
+      - name: primeira_liga
+        identifier: stats_joueurs_primeira_liga
+      - name: belgian_pro_league
+        identifier: stats_joueurs_belgian_pro_league
+    
+      
+
+      
+
+
+        
+
