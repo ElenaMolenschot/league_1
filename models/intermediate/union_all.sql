@@ -13,3 +13,7 @@ UNION ALL
 {{ cast_all('div', 'eredivisie') }}
 UNION ALL
 ({{ cast_all('div', 'primeira_liga') }})
+UNION ALL
+({{ cast_all('div', 'belgian_pro_league') }})
+
+
