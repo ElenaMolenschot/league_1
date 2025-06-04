@@ -23,6 +23,10 @@ sources:
         identifier: stats_joueurs_primeira_liga
       - name: belgian_pro_league
         identifier: stats_joueurs_belgian_pro_league
+      - name: valeurs_joueurs
+        identifier: valeurs_joueurs
+      - name: uefa_youth_league_2024
+        identifier: uefa_youth_league_2024
       - name: w_bundesliga
         identifier: salaires_bundesliga
       - name: w_eredivisie
