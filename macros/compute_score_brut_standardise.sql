@@ -45,16 +45,6 @@
     0.05 * CrdY_per90_ratio -
     0.05 * CrdR_per90_ratio
 
-    WHEN {{ Poste_simplifie }} = 'Milieu Relayeur' THEN
-    0.20 * Tkl_per90_ratio +
-    0.20 * Int_per90_ratio +
-    0.15 * Blocks_per90_ratio +
-    0.10 * Cmp_Passes_per90_ratio +
-    0.10 * PrgP_Passes_per90_ratio +
-    0.10 * Touches_per90_ratio -
-    0.10 * CrdY_per90_ratio -
-    0.05 * CrdR_per90_ratio
-
     WHEN  {{ Poste_simplifie }} = 'Milieu Défensif' THEN
     0.20 * Tkl_per90_ratio +
     0.20 * Int_per90_ratio +
