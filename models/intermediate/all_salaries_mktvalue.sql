@@ -6,7 +6,7 @@ WITH join_sub AS (
         ROUND(W.monthly_wages_eur, 0) AS Monthly_wages,
         W.annual_wages AS Annual_Wages,
         ROUND(M.market_value_eur, 0) AS Market_value_eur,
-        W.club AS Team
+        W.club AS Club
     FROM {{ ref('salaires_all') }} AS W
     FULL OUTER JOIN {{ ref('players_values_eu') }} AS M
     ON W.player = M.player_name
