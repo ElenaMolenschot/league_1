@@ -9,7 +9,6 @@
       0.10 * PK_per90_ratio -
       0.05 * CrdY_per90_ratio -
       0.05 * CrdR_per90_ratio
-
     WHEN {{ Poste_simplifie }} = 'Lateral' THEN
       0.15 * Tkl_per90_ratio +
       0.15 * Int_per90_ratio +
@@ -20,6 +19,7 @@
       0.10 * xAG_Expected_per90_ratio +
       0.05 * xG_Expected_per90_ratio -
       0.05 * CrdY_per90_ratio -
+    
       0.05 * CrdR_per90_ratio
 
     WHEN {{ Poste_simplifie }} = 'Milieu Offensif' THEN
@@ -55,5 +55,6 @@
     0.10 * CrdY_per90_ratio -
     0.05 * CrdR_per90_ratio
 
-  END
+    END
 {% endmacro %}
+
