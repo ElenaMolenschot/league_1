@@ -28,7 +28,7 @@ MAX(Att_Take_Ons_per90) OVER () AS max_Att_Take_Ons_per90,
 MAX(Succ_Take_Ons_per90) OVER () AS max_Succ_Take_Ons_per90
 
 FROM {{ ref('int_stats_per90') }}
-WHERE Nombre_Matchs >= 10 AND `Min` >= 300),
+WHERE Nombre_Matchs > 5 AND `Min` >= 300),
 
 ranking_global_score AS (
 SELECT *,

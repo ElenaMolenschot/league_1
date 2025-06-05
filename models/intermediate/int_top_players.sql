@@ -5,7 +5,7 @@ WITH sub_score_99 AS (SELECT
   Team,
   Nombre_Matchs,
   Poste_simplifie,
-  score_brut_standardise,
+  ROUND(score_brut_standardise,2) AS score_brut,
   ROUND(
     SAFE_DIVIDE(score_brut_standardise, MAX(score_brut_standardise) OVER (PARTITION BY Poste_simplifie)) * 99,
     2
