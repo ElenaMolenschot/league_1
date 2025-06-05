@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH sub_score_99 AS (SELECT 
   Player,
   Team,

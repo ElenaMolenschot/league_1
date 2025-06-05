@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 {{ cast_all('div', 'premier_league') }}
 UNION ALL
 ({{ cast_all('div', 'liga') }})

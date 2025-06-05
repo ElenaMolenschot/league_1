@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH stats_raw AS (
   SELECT
     Player,
@@ -59,10 +61,10 @@ SELECT
         WHEN Pos_1 IN ('CM', 'RCM', 'LCM') THEN 'Milieu relayeur'
 
         -- Milieux défensifs
-        WHEN Pos_1 IN ('CDM', 'DM', 'LDM', 'RDM') THEN 'Milieu défensif'
+        WHEN Pos_1 IN ('CDM', 'DM', 'LDM', 'RDM') THEN 'Milieu defensif'
 
         -- Défenseurs centraux
-        WHEN Pos_1 IN ('CB', 'LCB', 'RCB') THEN 'Défenseur central'
+        WHEN Pos_1 IN ('CB', 'LCB', 'RCB') THEN 'Defenseur central'
 
         -- Latéraux
         WHEN Pos_1 IN ('LB', 'RB', 'LWB', 'RWB', 'WB') THEN 'Lateral'

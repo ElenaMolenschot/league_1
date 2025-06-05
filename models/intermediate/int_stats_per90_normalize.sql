@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH 
 calcul_ratio AS (
 SELECT *,
