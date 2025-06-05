@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 SELECT 
     player_name, 
     market_value_eur, 
