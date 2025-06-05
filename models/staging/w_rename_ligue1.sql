@@ -5,5 +5,6 @@ SELECT
     , string_field_3 AS age
     , string_field_4 AS pos
     , string_field_5 AS nation 
+    , string_field_6 AS club
 FROM {{ source('div', 'w_ligue1') }}
-WHERE string_field_4 NOT LIKE "%NA%"
+WHERE string_field_3 NOT LIKE "%NA%"
