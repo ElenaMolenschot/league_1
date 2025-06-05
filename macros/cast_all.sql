@@ -32,6 +32,8 @@ SELECT
   SAFE_CAST(Att_Passes AS INT64) AS Att_Passes,
   SAFE_CAST(Cmp_percent_Passes AS FLOAT64) AS Cmp_percent_Passes,
   SAFE_CAST(PrgP_Passes AS INT64) AS PrgP_Passes,
-  SAFE_CAST(Carries_Carries AS INT64) AS Carries_Carries
+  SAFE_CAST(Carries_Carries AS INT64) AS Carries_Carries,
+  SAFE_CAST(Att_Take_Ons AS INT64) AS Att_Take_Ons,
+  SAFE_CAST(Succ_Take_Ons AS INT64) AS Succ_Take_Ons
 FROM {{ source(schema_name, table_name) }}
 {% endmacro %}
