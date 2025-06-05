@@ -6,12 +6,12 @@ SELECT * FROM {{ ref('w_rename_seriea') }}
 UNION ALL
 SELECT * FROM {{ ref('w_rename_serieb') }}
 UNION ALL
-SELECT * FROM {{ source('div', 'w_bundesliga') }}
+SELECT * FROM {{ ref('w_rename_bundesliga') }}
 UNION ALL 
-SELECT * FROM {{ ref('w_temp_cast_eredivisie') }}
+SELECT * FROM {{ ref('w_rename_eredivisie') }}
 UNION ALL
-SELECT * FROM {{ source('div', 'w_liga') }}
+SELECT * FROM {{ ref('w_rename_liga') }}
 UNION ALL 
-SELECT * FROM {{ source('div', 'w_premeira_liga') }}
+SELECT * FROM {{ ref('w_rename_premeira_liga') }}
 UNION ALL 
-SELECT * FROM {{ source('div', 'w_belgian_pro_league') }}
+SELECT * FROM {{ ref('w_rename_belgium') }}

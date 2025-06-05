@@ -29,8 +29,6 @@ sources:
         identifier: uefa_youth_league_2024
       - name: w_bundesliga
         identifier: salaires_bundesliga
-      - name: w_eredivisie
-        identifier: salaires_eredivisie
       - name: w_liga
         identifier: salaires_liga
       - name: w_ligue1
@@ -45,6 +43,41 @@ sources:
         identifier: salaires_serie_b
       - name: w_belgian_pro_league
         identifier: salaries_belgian_pro_league
+      - name: w_eredivisie
+        identifier: salaires_eredivisie
+      - name: eredivisie_ado_den_haag
+        identifier: eredivisie_ado_den_haag
+      - name: eredivisie_afcajax
+        identifier: eredivisie_afcajax
+      - name: eredivisie_az-alkmaar
+        identifier: eredivisie_az-alkmaar
+      - name: eredivisie_fc-emmen
+        identifier: eredivisie_fc-emmen
+      - name: eredivisie_fc-twente
+        identifier: eredivisie_fc-twente
+      - name: eredivisie_fc-utrecht
+        identifier: eredivisie_fc-utrecht
+      - name: eredivisie_feyenoord-rotterdam
+        identifier: eredivisie_feyenoord-rotterdam
+      - name: eredivisie_fortuna-sittard
+        identifier: eredivisie_fortuna-sittard
+      - name: eredivisie_heracles-almelo
+        identifier: eredivisie_heracles-almelo
+      - name: eredivisie_pec-zwolle
+        identifier: eredivisie_pec-zwolle
+      - name: eredivisie_psv-eindhoven
+        identifier: eredivisie_psv-eindhoven
+      - name: eredivisie_rkc-waalwijk
+        identifier: eredivisie_rkc-waalwijk
+      - name: eredivisie_sc-heerenveen
+        identifier: eredivisie_sc-heerenveen
+      - name: eredivisie_vitesse
+        identifier: eredivisie_vitesse
+      - name: eredivisie_vvv-venlo
+        identifier: eredivisie_vvv-venlo
+      - name: eredivisie_willem-ii
+        identifier: eredivisie_willem-ii
+
     
       
 
