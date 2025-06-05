@@ -9,7 +9,7 @@
       0.10 * PK_per90_ratio -
       0.05 * CrdY_per90_ratio -
       0.05 * CrdR_per90_ratio
-      
+
      WHEN {{ Poste_simplifie }} = 'Milieu droit' OR {{ Poste_simplifie }} = 'Milieu gauche' 
         OR {{ Poste_simplifie }} = 'Ailier droit' OR {{ Poste_simplifie }} = 'Ailier gauche' THEN
       0.15 * Succ_Take_Ons_per90_ratio +
@@ -20,6 +20,16 @@
       0.10 * SCA_SCA_per90_ratio -
       0.05 * CrdY_per90_ratio -
       0.05 * CrdR_per90_ratio
+      
+    WHEN {{ Poste_simplifie }} = 'Défenseur central' THEN
+      0.20 * Tkl_per90_ratio +
+      0.20 * Int_per90_ratio +
+      0.20 * Blocks_per90_ratio +
+      0.15 * PrgP_Passes_per90_ratio +
+      0.10 * Touches_per90_ratio +
+      0.10 * Cmp_Passes_per90_ratio -
+      0.10 * CrdY_per90_ratio -
+      0.10 * CrdR_per90_ratio
 
     WHEN {{ Poste_simplifie }} = 'Lateral' THEN
       0.15 * Tkl_per90_ratio +
