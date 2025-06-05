@@ -88,4 +88,3 @@ SELECT Player,
     WHEN Poste_simplifie = 'Buteur' THEN {{ compute_score_brut_standardise() }}
   END AS score_brut_standardise
  FROM ranking_global_score
- WHERE Poste_simplifie = "Buteur"
