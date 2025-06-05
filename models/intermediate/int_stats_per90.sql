@@ -65,7 +65,7 @@ SELECT
         WHEN Pos_1 IN ('CB', 'LCB', 'RCB') THEN 'Défenseur central'
 
         -- Latéraux
-        WHEN Pos_1 IN ('LB', 'RB', 'LWB', 'RWB', 'WB') THEN 'Latéral'
+        WHEN Pos_1 IN ('LB', 'RB', 'LWB', 'RWB', 'WB') THEN 'Lateral'
 
         -- Par défaut
         ELSE 'Inconnu'
