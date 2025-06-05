@@ -84,8 +84,5 @@ SELECT Player,
   Carries_Carries_per90,
   Att_Take_Ons_per90,
   Succ_Take_Ons_per90,
-  CASE 
-    WHEN Poste_simplifie = 'Buteur' THEN {{ compute_score_brut_standardise() }}
-  END AS score_brut_standardise
+  {{ compute_score_brut_standardise('Poste_simplifie') }} AS score_brut_standardise
  FROM ranking_global_score
- WHERE Poste_simplifie = "Buteur"
