@@ -23,6 +23,28 @@ sources:
         identifier: stats_joueurs_primeira_liga
       - name: belgian_pro_league
         identifier: stats_joueurs_belgian_pro_league
+      - name: valeurs_joueurs
+        identifier: valeurs_joueurs
+      - name: uefa_youth_league_2024
+        identifier: uefa_youth_league_2024
+      - name: w_bundesliga
+        identifier: salaires_bundesliga
+      - name: w_eredivisie
+        identifier: salaires_eredivisie
+      - name: w_liga
+        identifier: salaires_liga
+      - name: w_ligue1
+        identifier: salaires_ligue_1
+      - name: w_premeira_liga
+        identifier: salaires_premeira_liga
+      - name: w_premier_league
+        identifier: salaires_premier_league
+      - name: w_serie_a
+        identifier: salaires_serie_a
+      - name: w_serie_b
+        identifier: salaires_serie_b
+      - name: w_belgian_pro_league
+        identifier: salaries_belgian_pro_league
     
       
 
