@@ -5,7 +5,4 @@ WITH sub_pos AS (SELECT *
 FROM {{ ref('union_all') }})
 
 SELECT *
-   
 FROM sub_pos
-
-
