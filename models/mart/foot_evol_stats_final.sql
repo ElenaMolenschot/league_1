@@ -1,0 +1,15 @@
+SELECT League,
+Match_Date,
+Matchweek,
+Team,
+Home_Away,
+Player,
+Gls AS Goals,
+Ast AS Assists, 
+Sh As Shots,
+SoT Shots_On_Targets,
+Int AS Interceptions,
+Blocks,
+xG_Expected as xGoals,
+xAG_Expected as xAGoals
+FROM {{ ref('union_all') }}

@@ -1,6 +1,6 @@
 SELECT 
   S.Player, S.Team, S.Nombre_Matchs, S.Poste_simplifie, S.score_99,
-  W.Monthly_wages, W.Annual_Wages, W.Team
+  W.Monthly_wages, W.Annual_Wages, W.Market_value_eur, W.Team
 FROM (
     SELECT *, 
            LOWER(
@@ -24,4 +24,5 @@ INNER JOIN (
     FROM {{ ref('all_salaries_mktvalue') }}
 ) AS W
 ON S.player_key = W.player_key
+WHERE S.Team = "Como"
 ORDER BY score_99 DESC
