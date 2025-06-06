@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 SELECT League,
 Match_Date,
 Matchweek,
