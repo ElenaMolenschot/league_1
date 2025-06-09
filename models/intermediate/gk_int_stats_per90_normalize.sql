@@ -19,6 +19,7 @@ WITH calcul_ratio AS (
 gk_ranking_global_score AS (
   SELECT *,
     ROUND(SAFE_DIVIDE(GA_per90, max_GA_per90), 2) AS GA_per90_ratio,
+    ROUND(1 - SAFE_DIVIDE(GA_per90, max_GA_per90), 2) AS Inv_GA_per90_ratio,
     ROUND(SAFE_DIVIDE(Saves_per90, max_Saves_per90), 2) AS Saves_per90_ratio,
     ROUND(SAFE_DIVIDE(PSxG_per90, max_PSxG_per90), 2) AS PSxG_per90_ratio,
     ROUND(SAFE_DIVIDE(Stp_Crosses_per90, max_Stp_Crosses_per90), 2) AS Stp_Crosses_per90_ratio,
@@ -46,15 +47,13 @@ SELECT
   -- Score brut standardisé GK calculé directement ici
 ROUND(
   (
-    0.20 * Saves_per90_ratio +
-    0.20 * PSxG_per90_ratio +
-    0.15 * Stp_Crosses_per90_ratio +
-    0.10 * Opp_Crosses_per90_ratio +
-    0.10 * OPA_per90_ratio +
-    0.10 * Cmp_Launched_per90_ratio +
-    0.10 * Att_Launched_per90_ratio +
-    0.05 * (1 - GA_per90_ratio)
-  ) * LEAST(Nombre_Matchs / 20.0, 1.0),
+    0.25 * Saves_per90_ratio +              -- 🔼 Importance augmentée
+    0.20 * PSxG_per90_ratio +              -- Qualité des tirs arrêtés
+    0.10 * OPA_per90_ratio +               -- Jeu hors de sa ligne
+    0.10 * Cmp_Launched_per90_ratio +      -- Relance longue précise
+    0.05 * Att_Launched_per90_ratio +      -- Volume de relance longue
+    0.05 * Inv_GA_per90_ratio              -- 🔁 Peu de buts encaissés
+  ) * LEAST(Nombre_Matchs / 20.0, 1.0),     -- 🔒 Pénalité si peu de matchs joués
   4
 ) AS score_brut_standardise
 
