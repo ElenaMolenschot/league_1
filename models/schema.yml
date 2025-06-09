@@ -91,3 +91,7 @@ sources:
         identifier: gk_ligue_1
       - name: gk_liga
         identifier: gk_liga
+      - name: gk_belgian_pro_league
+        identifier: gk_belgian_pro_league
+      - name: gk_primeira
+        identifier: gk_primeira
