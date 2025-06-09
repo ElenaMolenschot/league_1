@@ -13,7 +13,7 @@ WITH int_top AS (
              "AAAAAAEEEEIIIIOOOOOUUUUYNCaaaaaaeeeeiiiiooooouuuuync"
            )
          ) AS sorted_player_key
-  FROM {{ ref('int_top_players') }}
+  FROM {{ ref('all_score_99') }}
 ),
 
 players_dedup AS (
