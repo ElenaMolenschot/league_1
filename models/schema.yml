@@ -99,3 +99,5 @@ sources:
         identifier: laliga_valeurs
       - name: seriea_players_market_values2
         identifier: seriea_players_market_values2
+      - name: leicester_2015_2016_stats
+        identifier: leicester_2015_2016_stats
