@@ -61,6 +61,26 @@ players_dedup AS (
     FROM players_cleaned
   )
   WHERE rn = 1
+),
+
+score_cleaned AS (
+  SELECT 
+    Player,
+    ROUND(score_99, 2) AS score_99,
+    LOWER(
+      TRANSLATE(
+        ARRAY_TO_STRING(
+          ARRAY(
+            SELECT word 
+            FROM UNNEST(SPLIT(Player, ' ')) AS word 
+            ORDER BY word
+          ), ' '
+        ),
+        "ÁÀÂÄÃÅÉÈÊËÍÌÎÏÓÒÔÖÕÚÙÛÜÝÑÇáàâäãåéèêëíìîïóòôöõúùûüýñç",
+        "AAAAAAEEEEIIIIOOOOOUUUUYNCaaaaaaeeeeiiiiooooouuuuync"
+      )
+    ) AS sorted_player_key
+  FROM {{ ref('int_top_players') }}
 )
 
 SELECT 
@@ -79,7 +99,10 @@ SELECT
   S.xG_Expected AS xGoals,
   S.xAG_Expected AS xAGoals,
   W.Market_value_eur,
-  W.Team AS Team_salaries
+  W.Team AS Team_salaries,
+  SC.score_99
 FROM int_top AS S
 INNER JOIN players_dedup AS W
   ON S.sorted_player_key = W.sorted_player_key
+LEFT JOIN score_cleaned AS SC
+  ON S.sorted_player_key = SC.sorted_player_key
