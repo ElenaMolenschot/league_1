@@ -69,7 +69,7 @@ SELECT
   W.Market_value_eur,
   W.Team AS Team_salaries
 FROM int_top AS S
-INNER JOIN players_dedup AS W
+LEFT JOIN players_dedup AS W
 ON S.sorted_player_key = W.sorted_player_key
 ORDER BY S.score_99 DESC
 >>>>>>> 0922e3ddee755d38df8654687557ed3e7d3aa395
