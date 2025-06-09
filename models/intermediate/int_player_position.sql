@@ -6,29 +6,29 @@ WITH sub_pos AS (
     FROM {{ ref('union_all') }}
 ),
 
--- On repère la dernière équipe dans laquelle chaque joueur a joué
+-- Étape 1 : date max pour chaque joueur (dernier match joué)
 last_match_per_player AS (
-    SELECT *
-    FROM (
-        SELECT *,
-               ROW_NUMBER() OVER (PARTITION BY player ORDER BY Match_Date DESC) AS rn
-        FROM sub_pos
-    )
-    WHERE rn = 1
+    SELECT player, MAX(Match_Date) AS last_match_date
+    FROM sub_pos
+    GROUP BY player
 ),
 
--- On en extrait le nom du joueur et son équipe la plus récente
-last_team_per_player AS (
-    SELECT player, team AS last_team
-    FROM last_match_per_player
+-- Étape 2 : on identifie le ou les clubs joués il y a moins de 60 jours avant cette date
+teams_played_recently AS (
+    SELECT DISTINCT s.player, s.team
+    FROM sub_pos s
+    JOIN last_match_per_player l
+      ON s.player = l.player
+     AND DATE_DIFF(l.last_match_date, s.Match_Date, DAY) BETWEEN 0 AND 60
 ),
 
--- On garde toutes les lignes correspondant à cette dernière équipe
+-- Étape 3 : on récupère tous les matchs joués par ces joueurs avec ce club
 final_filtered AS (
     SELECT s.*
     FROM sub_pos s
-    INNER JOIN last_team_per_player l
-        ON s.player = l.player AND s.team = l.last_team
+    JOIN teams_played_recently t
+      ON s.player = t.player
+     AND s.team = t.team
 )
 
 SELECT *

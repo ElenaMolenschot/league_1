@@ -1,9 +1,5 @@
+
 {{ config(materialized='table') }}
-<<<<<<< HEAD
-SELECT * FROM {{ ref('int_top_players') }} 
-INNER JOIN {{ ref('all_salaries_mktvalue') }} 
-USING(Player)
-=======
 
 WITH int_top AS (
   SELECT *, 
@@ -20,7 +16,7 @@ WITH int_top AS (
              "AAAAAAEEEEIIIIOOOOOUUUUYNCaaaaaaeeeeiiiiooooouuuuync"
            )
          ) AS sorted_player_key
-  FROM {{ ref('int_top_players') }}
+  FROM {{ ref('union_all') }}
 ),
 
 players_dedup AS (
@@ -60,16 +56,26 @@ players_dedup AS (
   WHERE rn = 1
 )
 
+
 SELECT 
   S.Player,
   S.Team,
-  S.Nombre_Matchs,
-  S.Poste_simplifie,
-  S.score_99,
+  S.League,
+  S.Match_Date,
+  S.Matchweek,
+  S.Team,
+  S.Home_Away,
+  S.Player,
+  S.Gls AS Goals,
+  S.Ast AS Assists, 
+  S.Sh As Shots,
+  S.SoT AS Shots_On_Targets,
+  S.Int AS Interceptions,
+  S.Blocks,
+  xG_Expected as xGoals,
+  xAG_Expected as xAGoals,
   W.Market_value_eur,
-  W.Team AS Team_salaries
+  W.Team as Team_salaries
 FROM int_top AS S
 INNER JOIN players_dedup AS W
 ON S.sorted_player_key = W.sorted_player_key
-ORDER BY S.score_99 DESC
->>>>>>> 0922e3ddee755d38df8654687557ed3e7d3aa395

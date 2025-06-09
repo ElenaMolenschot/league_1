@@ -2,7 +2,7 @@
 SELECT
   League,
   SAFE_CAST(Match_Date AS DATE) AS Match_Date,
-  SAFE_CAST(REGEXP_REPLACE(Matchweek, r'[^0-9]', '') AS INT64) AS Matchweek,
+  SAFE_CAST(REGEXP_EXTRACT(Matchweek, r'Matchweek\s+(\d+)') AS INT64) AS Matchweek,
   Team,
   Home_Away,
   Player,

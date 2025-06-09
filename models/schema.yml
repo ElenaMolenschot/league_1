@@ -77,12 +77,21 @@ sources:
         identifier: eredivisie_vvv-venlo
       - name: eredivisie_willem-ii
         identifier: eredivisie_willem-ii
-
-    
-      
-
-      
-
-
-        
-
+      - name: gk_premier_league
+        identifier: gk_premier_league
+      - name: gk_bundesliga
+        identifier: gk_bundesliga
+      - name: gk_eredivisie
+        identifier: gk_eredivisie
+      - name: gk_serie_a
+        identifier: gk_serie_a
+      - name: gk_serie_b
+        identifier: gk_serie_b
+      - name: gk_ligue_1
+        identifier: gk_ligue_1
+      - name: gk_liga
+        identifier: gk_liga
+      - name: gk_belgian_pro_league
+        identifier: gk_belgian_pro_league
+      - name: gk_primeira
+        identifier: gk_primeira
