@@ -52,7 +52,9 @@ players_dedup AS (
   )
   WHERE rn = 1
 )
+
 SELECT
+  S.League,
   S.Player,
   S.Team,
   S.Age,
