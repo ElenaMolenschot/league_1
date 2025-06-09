@@ -1,2 +1,2 @@
-SELECT * FROM {{ ref('foot_table_final') }}
-WHERE market_value_eur IS NULL
+SELECT COUNT(*) FROM {{ ref('test2') }}
+WHERE market_value_eur IS NOT NULL 
