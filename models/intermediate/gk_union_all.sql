@@ -13,3 +13,7 @@ union all
 {{ cast_all_gk("div", "gk_serie_a") }}
 union all
 {{ cast_all_gk("div", "gk_serie_b") }}
+union all
+{{ cast_all_gk("div", "gk_belgian_pro_league") }}
+union all
+{{ cast_all_gk("div", "gk_primeira") }}

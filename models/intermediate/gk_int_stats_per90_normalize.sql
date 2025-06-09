@@ -44,19 +44,19 @@ SELECT
   Att_Launched_per90,
 
   -- Score brut standardisé GK calculé directement ici
-  ROUND(
+ROUND(
+  (
     0.20 * Saves_per90_ratio +
     0.20 * PSxG_per90_ratio +
     0.15 * Stp_Crosses_per90_ratio +
     0.10 * Opp_Crosses_per90_ratio +
     0.10 * OPA_per90_ratio +
     0.10 * Cmp_Launched_per90_ratio +
-    0.10 * Att_Launched_per90_ratio -
-    0.05 * GA_per90_ratio,
-    4
-  ) AS score_brut_standardise
-
-  
+    0.10 * Att_Launched_per90_ratio +
+    0.05 * (1 - GA_per90_ratio)
+  ) * LEAST(Nombre_Matchs / 20.0, 1.0),
+  4
+) AS score_brut_standardise
 
 FROM gk_ranking_global_score
 ORDER BY score_brut_standardise DESC
