@@ -58,6 +58,7 @@ players_dedup AS (
 SELECT 
   S.Player,
   S.Team,
+  S.Age,
   S.Nombre_Matchs,
   S.Poste_simplifie,
   S.score_99,
