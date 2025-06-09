@@ -95,3 +95,5 @@ sources:
         identifier: gk_belgian_pro_league
       - name: gk_primeira
         identifier: gk_primeira
+      - name: laliga_valeurs
+        identifier: laliga_valeurs
