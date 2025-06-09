@@ -58,7 +58,9 @@ ROUND(SAFE_DIVIDE(Succ_Take_Ons_per90, max_Succ_Take_Ons_per90), 2) AS Succ_Take
 FROM calcul_ratio
 )
 
-SELECT Player,
+SELECT 
+  League,
+  Player,
   Team,
   Nombre_Matchs,
   Poste_simplifie,
