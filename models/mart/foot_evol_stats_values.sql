@@ -1,21 +1,7 @@
 {{ config(materialized='table') }}
 
-WITH int_top AS (
-  SELECT 
-    Player,
-    Team,
-    League,
-    Match_Date,
-    Matchweek,
-    Home_Away,
-    Gls,
-    Ast,
-    Sh,
-    SoT,
-    Int,
-    Blocks,
-    xG_Expected,
-    xAG_Expected,
+WITH union_with_key AS (
+  SELECT *,
     LOWER(
       TRANSLATE(
         ARRAY_TO_STRING(
@@ -66,6 +52,7 @@ players_dedup AS (
 score_cleaned AS (
   SELECT 
     Player,
+    Poste_simplifie,
     ROUND(score_99, 2) AS score_99,
     LOWER(
       TRANSLATE(
@@ -81,10 +68,21 @@ score_cleaned AS (
       )
     ) AS sorted_player_key
   FROM {{ ref('int_top_players') }}
+),
+
+score_dedup AS (
+  SELECT *
+  FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY sorted_player_key ORDER BY score_99 DESC) AS rn
+    FROM score_cleaned
+  )
+  WHERE rn = 1
 )
 
 SELECT 
   S.Player,
+  SC.Poste_simplifie,
   S.Team,
   S.League,
   S.Match_Date,
@@ -101,8 +99,8 @@ SELECT
   W.Market_value_eur,
   W.Team AS Team_salaries,
   SC.score_99
-FROM int_top AS S
-INNER JOIN players_dedup AS W
+FROM union_with_key AS S
+LEFT JOIN players_dedup AS W
   ON S.sorted_player_key = W.sorted_player_key
-LEFT JOIN score_cleaned AS SC
+LEFT JOIN score_dedup AS SC
   ON S.sorted_player_key = SC.sorted_player_key
