@@ -2,6 +2,7 @@
 
 WITH stats_raw AS (
   SELECT
+    League,
     Player,
     Team,
     Pos_1,
@@ -31,10 +32,11 @@ WITH stats_raw AS (
     SUM(Att_Take_Ons) AS total_Att_Take_Ons,
     SUM(Succ_Take_Ons) AS total_Succ_Take_Ons
   FROM {{ ref('int_player_position') }}
-  GROUP BY Player, Team, Pos_1
+  GROUP BY League, Player, Team, Pos_1
 ),
 stats_with_poste AS (
   SELECT
+    League,
     Player,
     Team,
     CASE
@@ -81,6 +83,7 @@ stats_with_poste AS (
 
 final_agg AS (
   SELECT
+    League,
     Player,
     Team,
     Poste_simplifie,
@@ -111,7 +114,7 @@ final_agg AS (
     ROUND(SUM(total_Att_Take_Ons) / NULLIF(SUM(`Min`), 0) * 90, 2) AS Att_Take_Ons_per90,
     ROUND(SUM(total_Succ_Take_Ons) / NULLIF(SUM(`Min`), 0) * 90, 2) AS Succ_Take_Ons_per90
   FROM stats_with_poste
-  GROUP BY Player, Team, Poste_simplifie
+  GROUP BY League, Player, Team, Poste_simplifie
 )
 
 SELECT * FROM final_agg
