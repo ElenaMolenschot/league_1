@@ -97,3 +97,5 @@ sources:
         identifier: gk_primeira
       - name: laliga_valeurs
         identifier: laliga_valeurs
+      - name: seriea_players_market_values2
+        identifier: seriea_players_market_values2
