@@ -1,4 +1,4 @@
-SELECT Player, Team, Poste_simplifie, score_99, Nombre_Matchs FROM {{ ref('int_top_players') }}
+SELECT Player, Team, Poste_simplifie, score_99, Nombre_Matchs FROM {{ ref('all_score_99') }}
 WHERE Team = "Como" AND player IN (
     'Nicolás Paz',
     'Ignace Van Der Brempt',
