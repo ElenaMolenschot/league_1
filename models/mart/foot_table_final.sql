@@ -1,3 +1,4 @@
+
 {{ config(materialized='table') }}
 
 WITH int_top AS (
