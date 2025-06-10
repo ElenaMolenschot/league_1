@@ -1,4 +1,3 @@
-
 {{ config(materialized='table') }}
 
 WITH int_top AS (
@@ -8,7 +7,7 @@ WITH int_top AS (
              ARRAY_TO_STRING(
                ARRAY(
                  SELECT word
-                 FROM UNNEST(SPLIT(Player, ' ')) AS word
+                 FROM UNNEST(SPLIT(TRIM(Player), ' ')) AS word
                  ORDER BY word
                ), ' '
              ),
@@ -26,7 +25,7 @@ players_dedup AS (
              ARRAY_TO_STRING(
                ARRAY(
                  SELECT word
-                 FROM UNNEST(SPLIT(Player, ' ')) AS word
+                 FROM UNNEST(SPLIT(TRIM(Player), ' ')) AS word
                  ORDER BY word
                ), ' '
              ),
@@ -40,7 +39,7 @@ players_dedup AS (
                ARRAY_TO_STRING(
                  ARRAY(
                    SELECT word
-                   FROM UNNEST(SPLIT(Player, ' ')) AS word
+                   FROM UNNEST(SPLIT(TRIM(Player), ' ')) AS word
                    ORDER BY word
                  ), ' '
                ),
@@ -52,6 +51,7 @@ players_dedup AS (
          ) AS rn
   FROM {{ ref('players_values_eu') }}
 ),
+
 players_dedup_filtered AS (
   SELECT *
   FROM players_dedup
@@ -84,4 +84,5 @@ joined_players AS (
 SELECT * EXCEPT (common_words, total_words)
 FROM joined_players
 WHERE common_words = total_words
+
 ORDER BY score_99 DESC
