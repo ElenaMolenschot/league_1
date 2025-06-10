@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-SELECT Player, Team, Poste_simplifie, score_99, Nombre_Matchs FROM {{ ref('all_score_99') }}
+WITH sub_age AS (SELECT Player, Team, Poste_simplifie, Age, score_99, Nombre_Matchs FROM {{ ref('all_score_99') }}
 WHERE Team = "Como" AND player IN (
     'Nicolás Paz',
     'Ignace Van Der Brempt',
@@ -13,9 +13,10 @@ WHERE Team = "Como" AND player IN (
     'Anastasios Douvikas',
     'Jonathan Ikone',
     'Jean Butez'
-)
+))
 
-
+SELECT AVG(Age)
+FROM sub_age
 
 
 
