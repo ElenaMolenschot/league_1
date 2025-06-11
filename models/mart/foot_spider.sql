@@ -4,6 +4,7 @@ SELECT
   League,
   Team,
   Player,
+  Poste_simplifie,
 
   Gls_per90_ratio AS Goals,
   Ast_per90_ratio AS Assistances,
