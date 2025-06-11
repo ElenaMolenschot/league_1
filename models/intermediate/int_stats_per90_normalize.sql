@@ -58,34 +58,6 @@ ROUND(SAFE_DIVIDE(Succ_Take_Ons_per90, max_Succ_Take_Ons_per90), 2) AS Succ_Take
 FROM calcul_ratio
 )
 
-SELECT 
-  League,
-  Player,
-  Team,
-  Nombre_Matchs,
-  Poste_simplifie,
-  Gls_per90,
-  Ast_per90,
-  PK_per90,
-  PKatt_per90,
-  Sh_per90,
-  SoT_per90,
-  CrdY_per90,
-  CrdR_per90,
-  Touches_per90,
-  Tkl_per90,
-  Int_per90,
-  Blocks_per90,
-  xG_Expected_per90,
-  npxG_Expected_per90,
-  xAG_Expected_per90,
-  SCA_SCA_per90,
-  GCA_SCA_per90,
-  Cmp_Passes_per90,
-  Att_Passes_per90,
-  PrgP_Passes_per90,
-  Carries_Carries_per90,
-  Att_Take_Ons_per90,
-  Succ_Take_Ons_per90,
+SELECT *,
   {{ compute_score_brut_standardise('Poste_simplifie') }} AS score_brut_standardise
  FROM ranking_global_score
