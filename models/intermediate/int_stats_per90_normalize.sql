@@ -61,7 +61,6 @@ FROM calcul_ratio
 SELECT Player,
   Team,
   Nombre_Matchs,
-  Pos_1,
   Poste_simplifie,
   Gls_per90,
   Ast_per90,
