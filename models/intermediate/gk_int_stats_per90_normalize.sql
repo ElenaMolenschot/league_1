@@ -63,4 +63,3 @@ SELECT
   ) AS score_brut_standardise
 
 FROM gk_ranking_global_score
-ORDER BY score_brut_standardise DESC
