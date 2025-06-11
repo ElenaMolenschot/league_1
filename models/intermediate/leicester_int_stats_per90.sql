@@ -2,7 +2,7 @@
 
 WITH stats_raw AS (
   SELECT
-    League_clean AS League,
+    League,
     Player,
     Team,
     Pos_1,

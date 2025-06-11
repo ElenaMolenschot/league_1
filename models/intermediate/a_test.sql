@@ -1,5 +1,3 @@
-{{ config(materialized='table') }}
-
 WITH sub_pos AS (
     SELECT *, 
            SUBSTRING(Pos, 1, 2) AS Pos_1
@@ -9,7 +7,18 @@ WITH sub_pos AS (
 -- Étape préliminaire : renommer certaines ligues
 renamed_league AS (
     SELECT *,
-    League AS League_clean
+        CASE 
+            WHEN League = 'Belgian Pro League' THEN 'BE'
+            WHEN League = 'Primeira Liga' THEN 'PT'
+            WHEN League = 'Eredivisie' THEN 'NL'
+            WHEN League = 'Fußball-Bundesliga' THEN 'DE'
+            WHEN League = 'La Liga' THEN 'ES'
+            WHEN League = 'Ligue 1' THEN 'FR'
+            WHEN League = 'Premier League' THEN 'GB'
+            WHEN League = 'Serie A' THEN 'IT'
+            WHEN League = 'Serie B' THEN 'IT_2'
+            ELSE League
+        END AS League_clean
     FROM sub_pos
 ),
 

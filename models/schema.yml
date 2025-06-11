@@ -95,3 +95,9 @@ sources:
         identifier: gk_belgian_pro_league
       - name: gk_primeira
         identifier: gk_primeira
+      - name: laliga_valeurs
+        identifier: laliga_valeurs
+      - name: seriea_players_market_values2
+        identifier: seriea_players_market_values2
+      - name: leicester_2015_2016_stats
+        identifier: leicester_2015_2016_stats

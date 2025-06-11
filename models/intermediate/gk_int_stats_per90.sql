@@ -24,7 +24,12 @@ WITH gk_prepared_data AS (
     SAFE_CAST(Stp_Crosses AS INT64) AS Stp_Crosses,
     SAFE_CAST(Stp_percent_Crosses AS FLOAT64) AS Stp_percent_Crosses,
     SAFE_CAST(Player_NumOPA_Sweeper AS INT64) AS Num_OPA,
-    SAFE_CAST(AvgDist_Sweeper AS FLOAT64) AS Avg_OPA_Dist
+    SAFE_CAST(AvgDist_Sweeper AS FLOAT64) AS Avg_OPA_Dist,
+            CASE
+      WHEN Home_Away = 'Home' AND SAFE_CAST(Away_Score AS INT64) = 0 THEN 1
+      WHEN Home_Away = 'Away' AND SAFE_CAST(Home_Score AS INT64) = 0 THEN 1
+      ELSE 0
+    END AS is_clean_sheet
   FROM {{ ref('gk_union_all') }}
 ),
 
@@ -54,7 +59,8 @@ stats_raw_gk AS (
     SUM(Stp_Crosses) AS total_Stp_Crosses,
     AVG(Stp_percent_Crosses) AS avg_Stp_percent_Crosses,
     SUM(Num_OPA) AS total_OPA,
-    AVG(Avg_OPA_Dist) AS avg_OPA_Dist
+    AVG(Avg_OPA_Dist) AS avg_OPA_Dist,
+    SUM(is_clean_sheet) AS total_clean_sheets
   FROM gk_prepared_data
   GROUP BY Player, Team
 ),
@@ -85,7 +91,8 @@ gk_per90_stats AS (
     ROUND(total_Stp_Crosses / NULLIF(Min, 0) * 90, 2) AS Stp_Crosses_per90,
     ROUND(avg_Stp_percent_Crosses, 2) AS Stp_percent_Crosses,
     ROUND(total_OPA / NULLIF(Min, 0) * 90, 2) AS OPA_per90,
-    ROUND(avg_OPA_Dist, 2) AS Avg_OPA_Dist
+    ROUND(avg_OPA_Dist, 2) AS Avg_OPA_Dist,
+    ROUND(SAFE_DIVIDE(total_clean_sheets, Nombre_Matchs), 2) AS Clean_Sheet_percent
   FROM stats_raw_gk
 )
 
