@@ -17,14 +17,14 @@ WITH sub_score_99 AS (
 
 age_by_player AS (
   SELECT 
-    Player, League,
+    Player, League_clean,
     MAX(Age) AS Age
   FROM {{ ref('int_player_position') }}
-  GROUP BY Player, League
+  GROUP BY Player, League_clean
 )
 
 SELECT 
-  a.League,
+  s.League,
   s.Player,
   a.Age,
   s.Team,
@@ -34,5 +34,5 @@ SELECT
   
 FROM sub_score_99 s
 LEFT JOIN age_by_player a
-  ON s.Player = a.Player AND s.League = a.League
+  ON s.Player = a.Player AND s.League = a.League_clean
 ORDER BY score_99 DESC
